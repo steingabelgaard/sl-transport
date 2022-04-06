@@ -1,0 +1,29 @@
+social https://github.com/steingabelgaard/social.git
+partner_contact https://github.com/steingabelgaard/partner-contact.git
+multi-company https://github.com/steingabelgaard/multi-company.git
+server-tools https://github.com/steingabelgaard/server-tools.git
+server-backend https://github.com/steingabelgaard/server-backend.git
+server-brand https://github.com/steingabelgaard/server-brand.git
+server-auth https://github.com/steingabelgaard/server-auth.git
+server-ux https://github.com/steingabelgaard/server-ux.git
+web https://github.com/steingabelgaard/web.git
+website https://github.com/steingabelgaard/website.git
+sg_member git@bitbucket.org:steingabelgaard/sg_member.git
+odoo-misc git@bitbucket.org:steingabelgaard/odoo-misc.git
+sg_accounting git@bitbucket.org:steingabelgaard/sg_accounting.git
+backend_theme https://github.com/steingabelgaard/backend_theme.git
+reporting-engine
+account-financial-reporting https://github.com/steingabelgaard/account-financial-reporting.git
+account-financial-tools
+account-invoicing
+bank-statement-import https://github.com/steingabelgaard/bank-statement-import.git 
+mis-builder https://github.com/steingabelgaard/mis-builder.git
+hr
+timesheet
+queue https://github.com/steingabelgaard/queue.git
+operating-unit https://github.com/OCA/operating-unit.git
+project
+vertical-association https://github.com/steingabelgaard/vertical-association
+account-closing
+account-move-import https://github.com/steingabelgaard/account-move-import.git
+# bank-payment
