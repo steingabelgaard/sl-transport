@@ -9,6 +9,7 @@
     'license': 'AGPL-3',
     'author': 'Jesper Darum,Stein & Gabelgaard ApS',
     'website': 'www.steingabelgaard.dk',
+    'application':True,
     'depends': [
     ],
     'data': [
