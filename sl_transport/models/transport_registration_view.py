@@ -14,44 +14,20 @@ class TransportRegistrationView(models.Model):
     _auto = False
 
     name = fields.Char()
-    participant_id = fields.Many2one("event.registration", "Participant")
-    camp_day_id = fields.Many2one("event.question.option", "Lejrdøgn")
-    registration_master_id = fields.Many2one(
-        "event.registration", "Master registration"
-    )
-    subcamp_id = fields.Many2one("event.subcamp", string="Subcamp")
-    subcamp_area_id = fields.Many2one("event.subcamp.area", string="Subcamp area")
-    scout_organization = fields.Char("National association/organization")
-    master_state = fields.Selection(
-        [
-            ("draft", "Draft"),
-            ("moved", "Moved"),
-            ("manual", "Requires approval"),
-            ("waitinglist", "Waiting list"),
-            ("open", "Confirmed"),
-            ("done", "Attended"),
-            ("notdone", "Not completed"),
-            ("cancel", "Unregistered"),
-            ("noshow", "No show"),
-            ("annul", "Annulled"),
-        ],
-        string="Master Status",
-    )
-    participant_state = fields.Selection(
-        [
-            ("draft", "Draft"),
-            ("moved", "Moved"),
-            ("manual", "Requires approval"),
-            ("waitinglist", "Waiting list"),
-            ("open", "Confirmed"),
-            ("done", "Attended"),
-            ("notdone", "Not completed"),
-            ("cancel", "Unregistered"),
-            ("noshow", "No show"),
-            ("annul", "Annulled"),
-        ],
-        string="Participant Status",
-    )
+    master_id = fields.Char() #fields.Many2one("event.registration", "Master Registration")
+    partner_id = fields.Char() #fields.Many2one("res.partner", "Customer")
+    country_id = fields.Char() #fields.Many2one("res_country", "Country")
+    event_id = fields.Char() #fields.Many2one("event", "Event")
+    in_transport = fields.Char()
+    out_transport = fields.Char()
+    transport_in_from_id = fields.Char() #fields.Many2one("res.partner", "In From Stop")
+    transport_out_to_id = fields.Char() #fields.Many2one("res.partner", "Out To Stop")
+    arrival_time = fields.Char()
+    departure_time = fields.Char()
+    arrival_flight = fields.Char()
+    departure_flight = fields.Char()
+    in_date = fields.Date()
+    out_date = fields.Date()
 
     @api.model_cr
     def init(self):
