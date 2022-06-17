@@ -1,5 +1,6 @@
 CREATE OR REPLACE VIEW transport_registration_view AS (
 select er.id ,er.name, COALESCE(er.registration_master_id,er.id) as master_id,COALESCE(er.partner_id,erm.partner_id) as partner_id, COALESCE(erm.country_id,er.country_id) as country_id,er.event_id,  
+sca.subcamp_id,
 eqo_in.export_value as in_transport, 
 eqo_out.export_value as out_transport,
 er.transport_in_from_id, er.transport_out_to_id, 
@@ -17,5 +18,6 @@ left outer join (select eqr.event_registration_id, min(TO_DATE(eqo.export_value,
                            where eqr.event_question_id=36
                           group by eqr.event_registration_id ) cd on cd.event_registration_id = er.id
 left outer join (select registration_id, min(TO_DATE(day,'YYYY_MM_DD'))as in_date , max(TO_DATE(day,'YYYY_MM_DD')+1) as out_date from event_registration_day group by registration_id) cdf on cdf.registration_id= er.id
-where (er.event_id  = 9 or er.event_id = 11) and er.master = false and er.state <> 'cancel' and COALESCE(erm.state,'was null')  <> 'cancel'
+left outer join "event_subcamp_area" sca on sca.id = COALESCE(erm.subcamp_area_id,er.subcamp_area_id) 
+where (er.event_id  = 9 or er.event_id = 11) and er.master = false and er.state = 'open' and COALESCE(erm.state,'open') = 'open'
 )

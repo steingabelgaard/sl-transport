@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record model="ir.actions.act_window" id="action_sltransportation">
+        <field name="name">SL Transportation</field>
+        <field name="res_model">transport.registration.view</field>
+        <field name="view_type">tree</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record model="ir.ui.view" id="transport_registration_view_tree_view">
+        <field name="name">transport.registration.view.tree</field>
+        <field name="model">transport.registration.view</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"  />
+                <field name="master_id"  />
+                <field name="partner_id"  />
+                <field name="country_id"  />
+                <field name="event_id"  />
+                <field name="subcamp_id" />
+                <field name="in_transport"  />
+                <field name="out_transport"  />
+                <field name="transport_in_from_id"  />
+                <field name="transport_out_to_id"  />
+                <field name="arrival_time"  />
+                <field name="departure_time"  />
+                <field name="arrival_flight" />
+                <field name="departure_flight"  />
+                <field name="in_date"  />
+                <field name="out_date"  />
+            </tree>
+        </field>
+    </record>
+
+    <!-- Main menu item for SL Transport -->
+    <menuitem id="menu_sltransportation" name="SL Transportation"
+        web_icon="sl2022,static/src/img/busstop_red.png"
+        sequence="4"
+        action="action_sltransportation" />
+
+</odoo>

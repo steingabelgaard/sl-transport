@@ -11,7 +11,7 @@
     'website': 'www.steingabelgaard.dk',
     'application':True,
     'depends': ["sg_member_event"],
-    'data': [ "security/transport_registration_view.xml"],
+    'data': [ "security/transport_registration_view.xml","views/sl_transportation_view.xml"],
     'demo': [
     ],
 }
