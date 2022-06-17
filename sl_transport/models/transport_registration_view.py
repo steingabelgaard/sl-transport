@@ -6,6 +6,8 @@ from os.path import join as opj
 
 from odoo import api, fields, models, tools
 
+class EventRegistration(models.Model):
+    _inherit = 'event.registration'
 
 class TransportRegistrationView(models.Model):
 
@@ -14,14 +16,14 @@ class TransportRegistrationView(models.Model):
     _auto = False
 
     name = fields.Char()
-    master_id = fields.Char() #fields.Many2one("event.registration", "Master Registration")
-    partner_id = fields.Char() #fields.Many2one("res.partner", "Customer")
-    country_id = fields.Char() #fields.Many2one("res_country", "Country")
-    event_id = fields.Char() #fields.Many2one("event", "Event")
+    master_id = fields.Many2one("event.registration", "Master Registration")
+    partner_id = fields.Many2one("res.partner", "Customer")
+    country_id = fields.Many2one("res.country", "Country")
+    event_id = fields.Many2one("event.event", "Event")
     in_transport = fields.Char()
     out_transport = fields.Char()
-    transport_in_from_id = fields.Char() #fields.Many2one("res.partner", "In From Stop")
-    transport_out_to_id = fields.Char() #fields.Many2one("res.partner", "Out To Stop")
+    transport_in_from_id = fields.Many2one("res.partner", "In From Stop")
+    transport_out_to_id = fields.Many2one("res.partner", "Out To Stop")
     arrival_time = fields.Char()
     departure_time = fields.Char()
     arrival_flight = fields.Char()
