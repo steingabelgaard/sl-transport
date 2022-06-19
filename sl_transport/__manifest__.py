@@ -10,7 +10,7 @@
     'author': 'Jesper Darum,Stein & Gabelgaard ApS',
     'website': 'www.steingabelgaard.dk',
     'application':True,
-    'depends': ["sg_member_event"],
+    'depends': ["sl2022"],
     'data': [ "security/transport_registration_view.xml","views/sl_transportation_view.xml"],
     'demo': [
     ],

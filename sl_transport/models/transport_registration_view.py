@@ -15,9 +15,13 @@ class TransportRegistrationView(models.Model):
     name = fields.Char()
     master_id = fields.Many2one("event.registration", "Master Registration")
     partner_id = fields.Many2one("res.partner", "Customer")
+    associated_group_id = fields.Many2one("event.registration", "Associated Registration") 
     country_id = fields.Many2one("res.country", "Country")
     event_id = fields.Many2one("event.event", "Event")
-    subcamp_id = fields.Char() #fields.Many2one("event.subcamp", "Subcamp")
+    subcamp_id = fields.Many2one("event.subcamp", "Subcamp")
+    busterminal = fields.Char()
+    in_date = fields.Date()
+    out_date = fields.Date()
     in_transport = fields.Char()
     out_transport = fields.Char()
     transport_in_from_id = fields.Many2one("res.partner", "In From Stop")
@@ -26,8 +30,7 @@ class TransportRegistrationView(models.Model):
     departure_time = fields.Char()
     arrival_flight = fields.Char()
     departure_flight = fields.Char()
-    in_date = fields.Date()
-    out_date = fields.Date()
+
 
     @api.model_cr
     def init(self):

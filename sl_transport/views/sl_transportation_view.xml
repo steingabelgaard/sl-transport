@@ -16,9 +16,13 @@
                 <field name="name"  />
                 <field name="master_id"  />
                 <field name="partner_id"  />
-                <field name="country_id"  />
+                <field name="associated_group_id"  />
+                <field name="country_id"  />  
                 <field name="event_id"  />
                 <field name="subcamp_id" />
+                <field name="busterminal" />
+                <field name="in_date"  />
+                <field name="out_date"  />
                 <field name="in_transport"  />
                 <field name="out_transport"  />
                 <field name="transport_in_from_id"  />
@@ -27,8 +31,7 @@
                 <field name="departure_time"  />
                 <field name="arrival_flight" />
                 <field name="departure_flight"  />
-                <field name="in_date"  />
-                <field name="out_date"  />
+
             </tree>
         </field>
     </record>
