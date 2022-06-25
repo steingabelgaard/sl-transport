@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record model="ir.ui.view" id="view_partner_form">
+        <field name="name">res.partner.form (in sl2022)</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <field name="municipality_id" position="before">
+                <field name="bus_stop_isport" groups="sg_member_organization.group_sgmember_admin" />
+            </field>
+        </field>
+    </record>
+
+</odoo>
