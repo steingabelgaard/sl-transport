@@ -6,10 +6,10 @@ from os.path import join as opj
 
 from odoo import api, fields, models, tools
 
-class TransportWebtourTour(models.Model):
-    _name = "transport.webtour.tour"
+class TransportWebtourtour(models.Model):
+    _name = "transport.webtourtour"
     _description = "SL Transport Webtour Tour"
-    _auto = False
+    _auto = True
 
     name = fields.Char()
     day = fields.Date("Day")

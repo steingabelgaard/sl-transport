@@ -11,7 +11,12 @@
     'website': 'www.steingabelgaard.dk',
     'application':True,
     'depends': ["sl2022"],
-    'data': [ "security/transport_registration_view.xml","views/sl_transportation_view.xml","views/res_partner_view.xml"],
+    'data': [   "security/transport_registration_view.xml",
+                "security/transport_webtourtour.xml",
+                "security/transport_ticket.xml",
+                "views/sl_transportation_view.xml",
+                "views/event_registration_view.xml",
+                "views/res_partner_view.xml"],
     'demo': [
     ],
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <odoo>
 
-    <record model="ir.actions.act_window" id="action_sltransportation">
-        <field name="name">SL Transportation</field>
+    <record model="ir.actions.act_window" id="action_transport_registration">
+        <field name="name">Transport registartion</field>
         <field name="res_model">transport.registration.view</field>
         <field name="view_type">tree</field>
         <field name="view_mode">list,form</field>
@@ -31,7 +31,55 @@
                 <field name="departure_time"  />
                 <field name="arrival_flight" />
                 <field name="departure_flight"  />
+            </tree>
+        </field>
+    </record>
 
+    <record model="ir.actions.act_window" id="action_transport_ticket">
+        <field name="name">Transport Tickets</field>
+        <field name="res_model">transport.ticket</field>
+        <field name="view_type">tree</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record model="ir.ui.view" id="transport_ticket_tree_view">
+        <field name="name">transport.ticket.tree</field>
+        <field name="model">transport.ticket</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"  />
+                <field name="ticket_type"  />
+                <field name="registration_id"  />
+                <field name="webtour_tour_id"  />
+            </tree>
+        </field>
+    </record>
+
+   <record model="ir.actions.act_window" id="action_transport_webtourtour">
+        <field name="name">Transport Webtour Tours</field>
+        <field name="res_model">transport.webtourtour</field>
+        <field name="view_type">tree</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record model="ir.ui.view" id="transport_webtourtour_tree_view">
+        <field name="name">transport.webtourtour.tree</field>
+        <field name="model">transport.webtourtour</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"  />
+                <field name="day"  />
+                <field name="from_rp_id"  />
+                <field name="to_rp_id"  />
+                <field name="depart_after"  />
+                <field name="arrive_before"  />
+                <field name="webtour_tourid"  />
+                <field name="webtour_pax"  />
+                <field name="webtour_etd"  />
+                <field name="webtour_eta"  />
+                <field name="webtour_note"  />
+                <field name="webtour_xml"  />
+                <field name="webtour_lastupdate"  />
             </tree>
         </field>
     </record>
@@ -40,6 +88,23 @@
     <menuitem id="menu_sltransportation" name="SL Transportation"
         web_icon="sl2022,static/src/img/busstop_red.png"
         sequence="4"
-        action="action_sltransportation" />
+        action="action_transport_registration" />
 
+    <!-- Menu entry for direct access to SL Transport -->
+    <menuitem id="menu_sltransportation_1" name="Transport Registration"
+        parent="menu_sltransportation"
+        sequence="1"
+        action="action_transport_registration" />
+
+    <!-- Menu entry for direct access to SL Transport -->
+    <menuitem id="menu_sltransportation_2" name="Transport Tickets"
+        parent="menu_sltransportation"
+        sequence="2"
+        action="action_transport_ticket" />
+
+    <!-- Menu entry for direct access to SL Transport -->
+    <menuitem id="menu_sltransportation_3" name="Transport webtour tour"
+        parent="menu_sltransportation"
+        sequence="3"
+        action="action_transport_webtourtour"/>
 </odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+  <record model="ir.ui.view" id="view_event_registration_form">
+		<field name="name">event.view_event_registration_form</field>
+		<field name="model">event.registration</field>
+        <field name="inherit_id" ref="event.view_event_registration_form" />
+        <field name="priority" eval="100" />
+        <field name="arch" type="xml">
+            <field name="host_group_id" position="before">
+                <field name="transport_ticket_in_id" groups="sg_member_organization.group_sgmember_admin" />
+                <field name="transport_ticket_out_id" groups="sg_member_organization.group_sgmember_admin" />
+            </field>
+        </field>
+    </record>
+
+</odoo>
