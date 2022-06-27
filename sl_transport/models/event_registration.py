@@ -6,5 +6,9 @@ from odoo import fields, models
 class EventRegistration(models.Model):
     _inherit = 'event.registration'
 
-    transport_ticket_in_id = fields.Many2one("transport.ticket", "Ticket to Camp",domain=[('ticket_type', '=', "in")])
-    transport_ticket_out_id = fields.Many2one("transport.ticket", "Ticket From Camp",domain=[('ticket_type', '=', "out")])
+ #   transport_ticket_in_id = fields.Many2one("transport.ticket", "Ticket to Camp",domain=[('ticket_type', '=', "in")])
+ #   transport_ticket_out_id = fields.Many2one("transport.ticket", "Ticket From Camp",domain=[('ticket_type', '=', "out")])
+    transport_ticket_ids = fields.One2many(
+        comodel_name="transport.ticket.view", 
+        inverse_name="registration_id", 
+        string="Ticket From Camp")

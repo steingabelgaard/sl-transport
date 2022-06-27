@@ -88,7 +88,7 @@
     <menuitem id="menu_sltransportation" name="SL Transportation"
         web_icon="sl2022,static/src/img/busstop_red.png"
         sequence="4"
-        action="action_transport_registration" />
+        action="action_transport_ticket" />
 
     <!-- Menu entry for direct access to SL Transport -->
     <menuitem id="menu_sltransportation_1" name="Transport Registration"

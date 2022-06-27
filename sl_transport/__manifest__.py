@@ -14,6 +14,7 @@
     'data': [   "security/transport_registration_view.xml",
                 "security/transport_webtourtour.xml",
                 "security/transport_ticket.xml",
+                "security/transport_ticket_view.xml",
                 "views/sl_transportation_view.xml",
                 "views/event_registration_view.xml",
                 "views/res_partner_view.xml"],

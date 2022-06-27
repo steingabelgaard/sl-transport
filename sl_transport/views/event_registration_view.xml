@@ -7,9 +7,18 @@
         <field name="inherit_id" ref="event.view_event_registration_form" />
         <field name="priority" eval="100" />
         <field name="arch" type="xml">
-            <field name="host_group_id" position="before">
-                <field name="transport_ticket_in_id" groups="sg_member_organization.group_sgmember_admin" />
-                <field name="transport_ticket_out_id" groups="sg_member_organization.group_sgmember_admin" />
+            <field name="transport_out_to_id" position="after">
+                <separator string="Transport Tickets" />
+                <field name="transport_ticket_ids" nolabel="1" colspan="2" groups="sg_member_organization.group_sgmember_admin" domain="[('master', '=', True)]" >
+                    <tree editable="bottom" domain="[('master', '=', True)]" >
+                        <field name="ticket_type" />
+                        <field name="pax" /> 
+                        <field name="etd" /> 
+                        <field name="from_rp_id" />   
+                        <field name="to_rp_id" /> 
+                        <field name="eta" /> 
+                    </tree>
+                </field>
             </field>
         </field>
     </record>
