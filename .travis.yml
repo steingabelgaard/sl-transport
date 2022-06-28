@@ -35,8 +35,8 @@ install:
   - export PYLINT_ODOO_JSLINTRC=${TRAVIS_BUILD_DIR}/.eslintrc
   - pip install pysqlite3
   - pip install plotly
-  - ln -s ${TRAVIS_BUILD_DIR}/odoo/custom/src/private/sl2022 ${TRAVIS_BUILD_DIR}/sl2022
-  - ln -s ${TRAVIS_BUILD_DIR}/odoo/custom/src/private/spejderne_login ${TRAVIS_BUILD_DIR}/spejderne_login
+  - ln -s /home/odoo/dependencies/sl2022/odoo/custom/src/private/sl2022 /home/odoo/dependencies/sl2022/sl2022
+  - ln -s /home/odoo/dependencies/sl2022/odoo/custom/src/private/spejderne_login /home/odoo/dependencies/sl2022/spejderne_login
   - travis_install_nightly
   # Requirements to test server_environment modules
   - printf '[options]\n\nrunning_env = dev\n' > ${HOME}/.openerp_serverrc
