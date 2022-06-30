@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<odoo>
+
+	<data noupdate="0">
+
+		<record id="module_sltransportation_category" model="ir.module.category">
+			<field name="name">SL Transportation</field>
+			<field name="description">SL Transportation Management</field>
+			<field name="sequence">16</field>
+		</record>
+
+		<!-- Can make system changes (e.g. change function and organization types) -->
+		<record id="group_sgmember_transport_admin" model="res.groups">
+			<field name="name">SG Member Transport Admin</field>
+			<field name="category_id" ref="module_sltransportation_category" />
+			<field name="is_function" eval="True" />
+			<field name="implied_ids" eval="[(4, ref('mail_template_raw_edit.group_mail_template_set_raw_edit')), (4, ref('base_import_security_group.group_import_csv'))]" />
+			<field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]" />
+			<!-- <field name="implied_ids" eval="[(4, ref('base_import_security_group.group_import_csv'))]"/>  TODO v12-->
+		</record>
+
+	</data>
+</odoo>

@@ -89,26 +89,26 @@
         web_icon="sl2022,static/src/img/busstop_red.png"
         sequence="4"
         action="action_transport_ticket" 
-        groups="sl2022.group_sgmember_transport_admin" />
+        groups="group_sgmember_transport_admin" />
 
     <!-- Menu entry for direct access to SL Transport -->
     <menuitem id="menu_sltransportation_1" name="Transport Registration"
         parent="menu_sltransportation"
         sequence="1"
         action="action_transport_registration" 
-        groups="sl2022.group_sgmember_transport_admin" />
+        groups="group_sgmember_transport_admin" />
 
     <!-- Menu entry for direct access to SL Transport -->
     <menuitem id="menu_sltransportation_2" name="Transport Tickets"
         parent="menu_sltransportation"
         sequence="2"
         action="action_transport_ticket"
-        groups="sl2022.group_sgmember_transport_admin"  />
+        groups="group_sgmember_transport_admin"  />
 
     <!-- Menu entry for direct access to SL Transport -->
     <menuitem id="menu_sltransportation_3" name="Transport webtour tour"
         parent="menu_sltransportation"
         sequence="3"
         action="action_transport_webtourtour"
-        groups="sl2022.group_sgmember_transport_admin" />
+        groups="group_sgmember_transport_admin" />
 </odoo>

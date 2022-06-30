@@ -9,6 +9,17 @@
         <!-- TODO review and adapt -->
         <field name="group_id" ref="base.group_user" />
         <field name="perm_read" eval="1" />
+        <field name="perm_create" eval="0" />
+        <field name="perm_write" eval="0" />
+        <field name="perm_unlink" eval="0" />
+    </record>
+
+    <record model="ir.model.access" id="transport_ticket_admin_access_name"> <!-- TODO acl id -->
+        <field name="name">transport.ticket admin access name</field> <!-- TODO acl name -->
+        <field name="model_id" ref="model_transport_ticket" />
+        <!-- TODO review and adapt -->
+        <field name="group_id" ref="group_sgmember_transport_admin"/>
+        <field name="perm_read" eval="1" />
         <field name="perm_create" eval="1" />
         <field name="perm_write" eval="1" />
         <field name="perm_unlink" eval="1" />
