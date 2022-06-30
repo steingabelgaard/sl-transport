@@ -22,10 +22,10 @@ addons:
 
 env:
   global:
-  - VERSION="12.0" TESTS="0" LINT_CHECK="0" TRANSIFEX="0" GIT_HOST="bitbucket.org"
+  - VERSION="12.0" TESTS="0" LINT_CHECK="0" TRANSIFEX="0" GIT_HOST="github.com"
   matrix:
   #- LINT_CHECK="1"
-  - TESTS="1" ODOO_REPO="steingabelgaard/odoo" MAKEPOT="1" TRAVIS=true LINT_CHECK="1" EXCLUDE="server_environment"
+  - TESTS="1" ODOO_REPO="steingabelgaard/odoo" MAKEPOT="0" TRAVIS=true LINT_CHECK="1" EXCLUDE="server_environment"
   #- TESTS="1" ODOO_REPO="OCA/OCB"
 
 
@@ -35,6 +35,9 @@ install:
   - export PYLINT_ODOO_JSLINTRC=${TRAVIS_BUILD_DIR}/.eslintrc
   - pip install pysqlite3
   - pip install plotly
+  - git clone -b 12.0 https://${GITHUB_TOKEN}@gitlab.com/steingabelgaard/sl2022.git /home/odoo/dependencies/sl2022
+  - ln -s /home/odoo/dependencies/sl2022/odoo/custom/src/private/sl2022 /home/odoo/dependencies/sl2022/sl2022
+  - ln -s /home/odoo/dependencies/sl2022/odoo/custom/src/private/spejderne_login /home/odoo/dependencies/sl2022/spejderne_login
   - travis_install_nightly
   # Requirements to test server_environment modules
   - printf '[options]\n\nrunning_env = dev\n' > ${HOME}/.openerp_serverrc

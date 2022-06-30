@@ -27,3 +27,4 @@ vertical-association https://github.com/steingabelgaard/vertical-association
 account-closing
 account-move-import https://github.com/steingabelgaard/account-move-import.git
 # bank-payment
+sl2022 https://{GITHUB_TOKEN}@gitlab.com/steingabelgaard/sl2022.git
