@@ -5,6 +5,12 @@ import os
 from os.path import join as opj
 
 from odoo import api, fields, models, tools
+from odoo.addons.queue_job.job import job
+
+#from ..interface import webtourinterface
+
+import logging
+_logger = logging.getLogger(__name__)
 
 class TransportWebtourtour(models.Model):
     _name = "transport.webtourtour"
@@ -25,3 +31,21 @@ class TransportWebtourtour(models.Model):
     webtour_note = fields.Char("Tour Note")
     webtour_xml = fields.Char("Tour XML")
     webtour_lastupdate = fields.Datetime("Webtour last update")
+
+
+    @api.multi
+    @job(default_channel="root")
+    def updatewebtour(self):
+        _logger.info('Here we go updatewebtour')
+        for tour in self:
+            _logger.info('hej2')
+        #raise Warning("Doit")
+
+    @api.multi
+    def updatewebtourtest(self):
+        _logger.info('Here we go updatewebtourtest')
+        #_logger.info(webtourinterface.login())
+        
+        for tour in self:
+            _logger.info(tour.name)
+            _logger.info(tour.from_rp_id.name)

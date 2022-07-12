@@ -111,4 +111,39 @@
         sequence="3"
         action="action_transport_webtourtour"
         groups="group_sgmember_transport_admin" />
+
+    <record model="ir.actions.server" id="print_instance">
+        <field name="name">Webtour Tour Server Action</field>
+        <field name="model_id" ref="model_transport_webtourtour"/>
+        <field name="state">code</field>
+        <field name="code">
+            raise Warning("Kilroy")
+        </field>
+    </record>
+
+  <menuitem id="menu_sltransportation_4" name="Transport webtour tour server"
+        parent="menu_sltransportation"
+        sequence="4"
+        action="print_instance"
+        groups="group_sgmember_transport_admin" />
+
+    <record id="webtourtour_action" model="ir.actions.server">
+        <field name="name">webtourtoutr action</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_transport_webtourtour"/>
+            <field name="binding_model_id" ref="model_transport_webtourtour" />
+            <field name="state">code</field>
+            <field name="code">records.with_delay().updatewebtour()</field>
+    </record>
+
+
+    <record id="webtourtourtest_action" model="ir.actions.server">
+        <field name="name">webtourtour test action</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_transport_webtourtour"/>
+            <field name="binding_model_id" ref="model_transport_webtourtour" />
+            <field name="state">code</field>
+            <field name="code">records.updatewebtourtest()</field>
+    </record>
+
 </odoo>
