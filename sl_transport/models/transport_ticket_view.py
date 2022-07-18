@@ -18,6 +18,7 @@ class TransportTicketView(models.Model):
     webtour_tour_id = fields.Many2one("transport.webtourtour", "Webtour Tour")
     from_rp_id = fields.Many2one("res.partner", string='From stop')
     to_rp_id = fields.Many2one("res.partner", string='To stop')
+    note = fields.Char(string="Note")
     etd = fields.Datetime(string='ETD')
     eta = fields.Datetime(string='ETA')
     pax = fields.Integer(string="PAX")

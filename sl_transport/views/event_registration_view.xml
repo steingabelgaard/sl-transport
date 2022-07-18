@@ -9,7 +9,7 @@
         <field name="arch" type="xml">
             <field name="transport_out_to_id" position="after">
                 <separator string="Transport Tickets" />
-                <field name="transport_ticket_ids" nolabel="1" colspan="2" groups="sg_member_organization.group_sgmember_admin" domain="[('master', '=', True)]" >
+                <field name="transport_ticket_ids" nolabel="1" colspan="2" domain="[('master', '=', True)]" >
                     <tree editable="bottom" domain="[('master', '=', True)]" >
                         <field name="ticket_type" />
                         <field name="pax" /> 
@@ -17,6 +17,7 @@
                         <field name="from_rp_id" />   
                         <field name="to_rp_id" /> 
                         <field name="eta" /> 
+                        <field name="note" /> 
                     </tree>
                 </field>
             </field>

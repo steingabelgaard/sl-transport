@@ -7,3 +7,4 @@ class ResPartner(models.Model):
     _inherit = "res.partner"
 
     bus_stop_isport = fields.Boolean(string='Bus stop is a Port',)
+    webtour_tourpoint_xml = fields.Char(string='Tour point XML')

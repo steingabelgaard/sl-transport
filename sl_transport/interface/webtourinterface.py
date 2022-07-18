@@ -2,6 +2,9 @@ import requests
 import xmltodict
 from dict2xml import dict2xml
 
+import logging
+#_logger = logging.getLogger(__name__)
+
 login_url = 'https://services.techhouse.dk/webTourManager/1.12/MajorAccount.svc/basHttps'
 url=        'https://services.techhouse.dk/webTourManager/1.12/Service.svc/basHttps'
 host =      'services.techhouse.dk'
@@ -323,10 +326,10 @@ def tour_Create(Name,NoPersons,StartDateTime,EndDateTime):
                     <web:Tour_Create>
                         <web:TourData>
                             <web1:AttPerson>JDa</web1:AttPerson>
-                            <web1:EndDateTime>"""+ EndDateTime +"""</web1:EndDateTime>
+                            <web1:EndDateTime>"""+ EndDateTime.strftime("%Y-%m-%dT%H:%M:%S.0000000+02:00") +"""</web1:EndDateTime>
                             <web1:Name>"""+ Name +"""</web1:Name>
                             <web1:NoPersons>"""+ NoPersons +"""</web1:NoPersons>
-                            <web1:StartDateTime>"""+ StartDateTime +"""</web1:StartDateTime>
+                            <web1:StartDateTime>"""+ StartDateTime.strftime("%Y-%m-%dT%H:%M:%S.0000000+02:00") +"""</web1:StartDateTime>
                             <web1:Status>10</web1:Status>
                         </web:TourData>
                     </web:Tour_Create>
@@ -334,7 +337,7 @@ def tour_Create(Name,NoPersons,StartDateTime,EndDateTime):
             </soapenv:Envelope>"""
 
         r = requests.post(url, headers=headers, data=xml.encode("utf-8"),cookies=cookies)
-
+        print(r)
         return r
 
     return repeatRead(do_req,m)
@@ -417,6 +420,36 @@ def tour_SetCustomer(TourIDno,cus):
 
     return repeatRead(do_req,m)
 
+def tour_SetNoPersons(TourIDno,NoPersons):
+    c = 'ITour'
+    m = 'Tour_SetNoPersons'
+  
+    global cookies
+    global url
+    global soap_url
+    global host
+
+    def do_req():
+        headers = { 'Content-Type':'text/xml;charset=UTF-8',
+                    'SOAPAction': soap_url+c+'/'+m,
+                    'Host':host}
+
+        xml = """<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="https://services.techhouse.dk/webTourManager" xmlns:b="http://schemas.datacontract.org/2004/07/webTourManager.Classes">
+                <soapenv:Header/>
+                <soapenv:Body>
+                    <web:"""+m+""">
+                        <web:TourIDno>"""+ TourIDno +"""</web:TourIDno>
+                        <web:NoPersons>"""+ NoPersons +"""</web:NoPersons>
+                    </web:"""+m+""">
+                </soapenv:Body>
+            </soapenv:Envelope>"""
+
+        r = requests.post(url, headers=headers, data=xml,cookies=cookies)
+
+        return r
+
+    return repeatRead(do_req,m)
+
 def test() :
     headers = {'Content-Type':'text/xml;charset=UTF-8',
     'SOAPAction':'https://services.techhouse.dk/webTourManager/ITour/Tour_GetFromLastUpdated',
@@ -484,31 +517,32 @@ def test() :
     print (res['a:Notifications']['b:NotificationItem']['b:Description'])
     print()
 
-#print (res['a:Notifications']['b:NotificationItem']['b:Description'])
-logoff()
-login()
+def jda() :
+    #print (res['a:Notifications']['b:NotificationItem']['b:Description'])
+    logoff()
+    login()
 
-#tp1 = tourPoint_CreateFromAddress2WithLatLong('test3','Provevej 3','kontral','1111','hjemby','DK','9','11')
+    #tp1 = tourPoint_CreateFromAddress2WithLatLong('test3','Provevej 3','kontral','1111','hjemby','DK','9','11')
 
-res = tour_GetFromLastUpdated('2022-07-06T00:00:00.00000+02:00')
-print(res)
+    res = tour_GetFromLastUpdated('2022-07-06T00:00:00.00000+02:00')
+    print(res)
 
-tour = tour_Create('Testtur6','45','2022-07-22T11:05:00.0000000+02:00','2022-07-22T11:35:00.0000000+02:00')
-tourid = tour['a:Content']['b:TourIDno']
-print(tour['a:Content']['b:TourIDno'])
-cus = Customer_GetFromSearchPattern('42438838')
-tour1 = tour_SetCustomer(tour['a:Content']['b:TourIDno'],cus['a:Content']['b:Customers']['b:CustomerItem'])
-tp1 = tourPoint_CreateFromAddressWithLatLong('test6','Prøvevej 4','1111','hjemby','DK','55','11')
-tour2 = tour_SetLocation_NewTourPoint('StartLocation',tour['a:Content']['b:TourIDno'],tp1)
-camp1 = tourPoint_CreateFromAddress2WithLatLong('SL2022, Brandhøjgårdsvej','Brandhøjgårdsvej','Ind fra Hovedgaden/Hedehusene','2640','Hedehusene','DK','55.62675','12.18535')
-tour3 = tour_SetLocation_NewTourPoint('EndLocation',tour['a:Content']['b:TourIDno'],camp1)
+    tour = tour_Create('Testtur6','45','2022-07-22T11:05:00.0000000+02:00','2022-07-22T11:35:00.0000000+02:00')
+    tourid = tour['a:Content']['b:TourIDno']
+    print(tour['a:Content']['b:TourIDno'])
+    cus = Customer_GetFromSearchPattern('42438838')
+    tour1 = tour_SetCustomer(tour['a:Content']['b:TourIDno'],cus['a:Content']['b:Customers']['b:CustomerItem'])
+    tp1 = tourPoint_CreateFromAddressWithLatLong('test6','Prøvevej 4','1111','hjemby','DK','55','11')
+    tour2 = tour_SetLocation_NewTourPoint('StartLocation',tour['a:Content']['b:TourIDno'],tp1)
+    camp1 = tourPoint_CreateFromAddress2WithLatLong('SL2022, Brandhøjgårdsvej','Brandhøjgårdsvej','Ind fra Hovedgaden/Hedehusene','2640','Hedehusene','DK','55.62675','12.18535')
+    tour3 = tour_SetLocation_NewTourPoint('EndLocation',tour['a:Content']['b:TourIDno'],camp1)
 
-tour4 = tour_Get(tourid)
-print(tour4)
+    tour4 = tour_Get(tourid)
+    print(tour4)
 
 
-res = tour_GetFromLastUpdated('2022-07-10T21:12:44.90432+02:00')
-res = tour_GetFromLastUpdated('2022-07-06T00:00:00.00000+02:00')
-print(res)
-print (res['a:Access']['b:IsAuthenticated'])
-print (res['a:Content']['b:TourIDnos'])
+    res = tour_GetFromLastUpdated('2022-07-10T21:12:44.90432+02:00')
+    res = tour_GetFromLastUpdated('2022-07-06T00:00:00.00000+02:00')
+    print(res)
+    print (res['a:Access']['b:IsAuthenticated'])
+    print (res['a:Content']['b:TourIDnos'])
